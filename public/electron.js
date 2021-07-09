@@ -8,11 +8,12 @@ const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-d
 
 let mainWindow;
 
-// require("update-electron-app")({
-//   repo: "kitze/react-electron-example",
-//   updateInterval: "1 hour"
-// });
-
+if (!isDev){
+  require("update-electron-app")({
+    repo: "TechStudent11/microtext",
+    updateInterval: "1 hour"
+  });
+}
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 900,
