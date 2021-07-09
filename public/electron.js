@@ -44,12 +44,14 @@ app.on("activate", () => {
   }
 });
 
-app.whenReady().then(() => {
-  installExtension(REACT_DEVELOPER_TOOLS, {
-    loadExtensionOptions: {
-      allowFileAccess: true
-    }
+if (isDev) {
+  app.whenReady().then(() => {
+    installExtension(REACT_DEVELOPER_TOOLS, {
+      loadExtensionOptions: {
+        allowFileAccess: true
+      }
+    })
+    .then((name) => console.log(`Added Extension: ${name}`))
+    .catch((err) => console.log(`An error occured when trying to install an extension: ${err}`))
   })
-  .then((name) => console.log(`Added Extension: ${name}`))
-  .catch((err) => console.log(`An error occured when trying to install an extension: ${err}`))
-})
+}
